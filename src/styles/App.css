@@ -66,3 +66,25 @@ main {
   color: #666;
   font-style: italic;
 }
+/* Add these at the bottom of App.css */
+header {
+  background: #242424;
+  padding: 1rem;
+}
+
+header nav {
+  display: flex;
+  gap: 1rem;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+}
+
+footer {
+  background: #242424;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
