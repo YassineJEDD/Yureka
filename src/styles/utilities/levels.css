@@ -1,0 +1,19 @@
+.level-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.level-badge.beginner {
+    background-color: #a5d6a7;
+}
+
+.level-badge.intermediate {
+    background-color: #90caf9;
+}
+
+.level-badge.advanced {
+    background-color: #f48fb1;
+}

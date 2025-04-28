@@ -1,0 +1,61 @@
+.main-header {
+    background: #000000;
+    padding: 0.3rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: solid 0.15rem #396200;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-yureka {
+    width: 150px;
+    height: auto;
+}
+
+.logo-yureka:hover {
+    filter: drop-shadow(0px 0px 15px rgba(145, 255, 0, 2));
+}
+
+.main-nav {
+    display: flex;
+    gap: 2rem;
+    padding-top: 1rem;
+}
+
+.main-nav a:hover {
+    filter: drop-shadow(0px 0px 15px rgba(145, 255, 0, 2));
+}
+
+a img {
+    width: 100px;
+    height: auto;
+}
+
+.flashcards-nav {
+    width: 118px;
+    height: auto;
+}
+
+.community-nav {
+    width: 117px;
+    height: auto;
+}
+
+.profile-icon {
+    width: 38px;
+    height: auto;
+    padding-top: 0.65rem;
+}
+
+.profile-icon:hover {
+    filter: drop-shadow(0px 0px 10px rgba(145, 255, 0, 2));
+}
+

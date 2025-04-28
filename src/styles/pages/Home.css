@@ -1,0 +1,101 @@
+.home-page {
+    padding-bottom: 3rem;
+}
+
+.level-section {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.level-section h2 {
+    font-size: 19px;
+    margin-bottom: 0.5rem;
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+.home-emoji {
+    font-size: 1.5rem;
+    height: auto;
+}
+
+.title-home {
+    padding: 4rem;
+    font-size: 16px;
+    font-family: 'Press Start 2P', sans-serif;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    color: #A5E165;
+}
+
+.title-emoji {
+    font-size: 2rem;
+    height: auto;
+}
+
+.level-description {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.level-section .story-grids-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    .level-description {
+        color: #aaa;
+    }
+}
+
+.discover-more-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    padding: 0 5.5rem;
+}
+
+.discover-more-img {
+    width: 50px;
+    height: auto;
+    animation: move-sideways 2s ease-in-out infinite;
+}
+
+@keyframes move-sideways {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+.discover-more-section h3 {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 14px;
+}
+
+.discover-more-link {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.discover-more-link:hover {
+    color: #A5E165;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+}

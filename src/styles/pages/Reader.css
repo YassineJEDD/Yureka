@@ -1,0 +1,13 @@
+.reader .sentence {
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.reader .chinese {
+    font-size: 1.5rem;
+}
+
+.reader .english {
+    color: #666;
+    font-style: italic;
+}

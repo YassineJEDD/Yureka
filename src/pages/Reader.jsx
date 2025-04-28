@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { stories } from '../data/stories'
+import '../styles/pages/Reader.css';
+import '../styles/utilities/levels.css';
 
 export default function Reader() {
     const { storyId } = useParams()

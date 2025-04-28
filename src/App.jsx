@@ -1,7 +1,10 @@
 import { Outlet, Link } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import './styles/App.css'
+import './styles/App.css';
+import './styles/components/Header.css';
+import './styles/components/Footer.css';
+import './styles/utilities/grid.css';
 
 export default function App() {
     return (
