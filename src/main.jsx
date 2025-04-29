@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import App from './App'
-import Home from './pages/Home'
-import Library from './pages/Library'
-import Reader from './pages/Reader'
+import App from '../../Yureka/src/views/App.jsx'
+import Home from '../../Yureka/src/views/pages/Home'
+import Library from '../../Yureka/src/views/pages/Library'
+import Reader from '../../Yureka/src/views/pages/Reader'
 import './styles/index.css'
 
 const router = createBrowserRouter([

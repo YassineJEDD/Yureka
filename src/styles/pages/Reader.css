@@ -1,13 +1,41 @@
+.reader {
+    min-height: 100vh;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.reader h1 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.reader .content {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
 .reader .sentence {
-    margin: 15px 0;
+    margin: 25px 0;
     cursor: pointer;
 }
 
 .reader .chinese {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #ffffff;
 }
 
 .reader .english {
-    color: #666;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #aaa;
     font-style: italic;
 }
