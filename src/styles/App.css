@@ -10,6 +10,6 @@
   src: url('../../public/fonts/PressStart2P.ttf');
 }
 
-a, button, [role="button"], .clickable {
-  cursor: url('../../public/cursors/pointer-pixel-cursor.png') 0 0, pointer;
+a, button, [role="button"], .clickable .sentence-reader {
+  cursor: url('../../public/cursors/pointer-pixel-cursor.png') 0 0, pointer !important;
 }

@@ -1,5 +1,5 @@
 .reader {
-    min-height: 100vh;
+    min-height: 100%;
     background-color: #000;
     color: #fff;
     display: flex;
@@ -17,12 +17,11 @@
 }
 
 .reader .content {
-    width: 100%;
     max-width: 800px;
     text-align: center;
 }
 
-.reader .sentence {
+.reader .sentence-reader {
     margin: 25px 0;
     cursor: pointer;
 }

@@ -3,6 +3,7 @@ import Hero from '../components/Hero.jsx';
 import StoryCard from '../components/StoryCard.jsx';
 import { stories } from '../../data/stories.js';
 import '../../styles/pages/Home.css';
+import {Link} from "react-router-dom";
 
 export default function Home() {
     const [newbieStories, setNewbieStories] = useState([]);
@@ -117,7 +118,9 @@ export default function Home() {
             <section className="discover-more-section">
                 <div className="discover-more-container">
                     <img src="/public/Yureka-Assets/discover-more.png" alt="Discover More" className="discover-more-img" />
-                    <a href="/discover-more" className="discover-more-link">Discover more stories</a>
+                    <Link to="/discover" className="discover-more-link">
+                        <p>Discover more stories</p>
+                    </Link>
                 </div>
             </section>
         </div>

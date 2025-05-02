@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { stories } from '../../data/stories.js'
 import '../../styles/pages/Reader.css';
@@ -10,6 +10,10 @@ export default function Reader() {
 
     const story = stories.find(s => s.id === parseInt(storyId))
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     if (!story) return <div>Story not found</div>
 
     return (
@@ -19,7 +23,7 @@ export default function Reader() {
                 {story.content.map((sentence, index) => (
                     <div
                         key={index}
-                        className="sentence"
+                        className="sentence-reader"
                         onClick={() => setActiveSentence(index)}
                     >
                         <p className="chinese">{sentence.chinese}</p>
