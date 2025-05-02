@@ -38,3 +38,24 @@
     color: #aaa;
     font-style: italic;
 }
+
+.reader-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.story-title-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    flex-grow: 1;
+    font-family: 'Press Start 2P', sans-serif;
+    margin-left: -90px;
+}
+
+
+.reader {
+    padding-top: 20px;
+}

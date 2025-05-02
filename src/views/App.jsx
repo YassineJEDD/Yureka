@@ -1,15 +1,17 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Header from './components/Header.jsx'
 import Footer from './components/Footer.jsx'
 import '../styles/App.css';
 import '../styles/components/Header.css';
 import '../styles/components/Footer.css';
-import '../styles/utilities/grid.css';
 
 export default function App() {
+    const location = useLocation();
+    const isReaderPage = location.pathname.includes('/read/');
+
     return (
         <div className="app">
-            <Header />
+            {!isReaderPage && <Header />}
             <main>
                 <Outlet />
             </main>
