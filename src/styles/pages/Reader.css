@@ -1,29 +1,284 @@
+/* =======================
+   LAYOUT & PAGE STRUCTURE 
+========================== */
+.reader-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-story-container {
+    max-width: 1300px;
+    width: 100%;
+    margin: 100px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =======================
+   HEADER STYLES
+========================== */
+.simple-header {
+    background: #000000;
+    padding: 0.3rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: solid 0.15rem #396200;
+}
+
+.simple-header .header-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.story-title-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    flex-grow: 1;
+    font-family: 'Press Start 2P', sans-serif;
+    margin-left: -90px;
+}
+
+/* =======================
+   READER MAIN CONTAINER
+========================== */
 .reader {
+    width: 100%;
+    padding-top: 0;
     min-height: 100%;
     background-color: #000;
     color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px;
+    padding-bottom: 40px;
     box-sizing: border-box;
 }
 
 .reader h1 {
     font-size: 2.5rem;
-    margin-bottom: 40px;
-    text-align: center;
+    margin-bottom: 15px;
     color: #ffffff;
+    font-family: 'Press Start 2P', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .reader .content {
-    max-width: 800px;
+    max-width: 1000px;
+    width: 100%;
     text-align: center;
+    margin: 40px;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    overflow-y: auto;
+    position: relative;
 }
 
-.reader .sentence-reader {
+/* =======================
+   STORY BANNER STYLES
+========================== */
+.story-banner {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.story-banner-image {
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.story-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to left, rgba(0,0,0,0.2) 0%, rgba(0, 0, 0, 0.61) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.story-info-container {
+    max-width: 1000px;
+    width: 100%;
+    padding: 0 20px;
+    text-align: left;
+    position: absolute;
+    bottom: 160px;
+    left: -120px;
+    right: 0;
+    margin: 0 auto;
+}
+
+.story-description {
+    color: #ddd;
+    font-size: 1.1rem;
+    max-width: 700px;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+.banner-title {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    max-height: 2.8em;
+    overflow: hidden;
+}
+
+.title-word {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    text-shadow:
+            2px 2px 0 #000,
+            4px 4px 0 #000,
+            6px 6px 0 rgba(0,0,0,0.8);
+    position: relative;
+    z-index: 2;
+}
+
+/* =======================
+   LEVEL BADGE STYLES
+========================== */
+.level-badge-container {
+    margin-bottom: 15px;
+}
+
+.level-badge {
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-transform: capitalize;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.7rem;
+    display: inline-block;
+}
+
+.level-emoji {
+    font-size: 1rem;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+/* Level badge variants */
+.level-badge.newbie {
+    background-color: #4CAF50;
+}
+
+.level-badge.explorer {
+    background-color: #2196F3;
+}
+
+.level-badge.sage {
+    background-color: #9C27B0;
+}
+
+.level-badge.grand-master {
+    background-color: #F44336;
+}
+
+/* =======================
+   STORY READER COMPONENTS
+========================== */
+.story-definition-box {
+    position: sticky;
+    top: 66px;
+    text-align: left;
+    width: 100.2%;
+}
+
+.sentence-definition {
+    width: 100%;
+    background: #000;
+    border: 0.094rem solid rgba(57, 98, 0, 0.5);
+    border-top-width: 0.15rem;
+    border-bottom-width: 0.01rem;
+    margin: 0;
+    padding: 15px 30px;
+    box-sizing: border-box;
+    position: relative;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.sentence-definition::before {
+    content: "Sentence definition";
+    position: absolute;
+    top: 8px;
+    left: 30px;
+    font-size: 0.7rem;
+    opacity: 0.5;
+    color: #fff;
+}
+
+.word-definition {
+    width: 100%;
+    background: #000;
+    border: 0.094rem solid rgba(57, 98, 0, 0.5);
+    border-bottom-width: 0.15rem;
+    margin: 0;
+    padding: 15px 30px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px -3px rgba(57, 98, 0, 0.53);
+    position: relative;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.word-definition::before {
+    content: "Word definition";
+    position: absolute;
+    top: 8px;
+    left: 30px;
+    font-size: 0.7rem;
+    opacity: 0.5;
+    color: #fff;
+}
+
+.story-reader-content {
+    border: 0.094rem solid rgba(57, 98, 0, 0.5);
+    border-top: none;
+    text-align: center;
+    max-width: 1359px;
+    width: 100%;
+    box-shadow: 0 0 6px -1px rgba(57, 98, 0, 0.53);
+}
+
+.sentence-reader {
     margin: 25px 0;
     cursor: pointer;
+    padding: 25px 30px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.reader .sentence-reader:hover {
+    background-color: rgba(165, 225, 101, 0.1);
+}
+
+.reader .sentence-reader:active {
+    background-color: rgba(165, 225, 101, 0.2);
 }
 
 .reader .chinese {
@@ -39,23 +294,57 @@
     font-style: italic;
 }
 
-.reader-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+/* Add these styles to your Reader.css file */
 
-.story-title-header {
+/* Style for the definition text */
+.definition-text {
     font-size: 1.2rem;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    flex-grow: 1;
-    font-family: 'Press Start 2P', sans-serif;
-    margin-left: -90px;
+    color: #fff;
+    margin: 0;
+}
+
+/* Add highlight style for active sentence */
+.sentence-reader.active {
+    background-color: rgba(165, 225, 101, 0.1);
 }
 
 
-.reader {
-    padding-top: 20px;
+/* Remove the English translation from appearing in the sentence reader */
+.reader .english {
+    display: none;
+}
+
+/* =======================
+   MEDIA QUERIES
+========================== */
+@media (max-width: 768px) {
+    .story-banner-image {
+        height: 350px;
+    }
+
+    .banner-title {
+        font-size: 1.8rem;
+    }
+
+    .story-description {
+        font-size: 1rem;
+    }
+
+    .story-info-container {
+        bottom: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .story-banner-image {
+        height: 300px;
+    }
+
+    .banner-title {
+        font-size: 1.5rem;
+    }
+
+    .story-info-container {
+        bottom: 30px;
+    }
 }

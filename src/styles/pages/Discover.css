@@ -1,4 +1,230 @@
 .discover-page {
-    padding: 2rem;
+    padding: 0;
     color: white;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Press Start 2P', system-ui, sans-serif;
+}
+
+.library-hero {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1A2214;
+    padding: 5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    border: 1px solid #3B603F;
+}
+
+.hero-content {
+    max-width: 100%;
+}
+
+.library-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.hero-subline {
+    padding: 0;
+    margin: 0;
+}
+
+.hero-text {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.hero-image-discover {
+    max-width: 100%;
+}
+
+.hero-image-discover img {
+    max-width: 100%;
+    width: 1500px;
+    height: 400px;
+    object-fit: cover;
+    margin-bottom: -85px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.search-input {
+    background-color: #222;
+    border: 1px solid #444;
+    color: white;
+    padding: 0.8rem 1rem;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.story-filters-discover {
+    margin-bottom: 2rem;
+}
+
+.filter-heading {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.level-filters {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-button {
+    background-color: transparent;
+    border: 1px solid #396200;
+    border-radius: 20px;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-family: inherit;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: #333;
+}
+
+.filter-button.active {
+    background-color: #1a1a1a;
+    border-color: #fff;
+}
+
+
+.story-grid-discover {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.story-card-discover {
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    height: 200px;
+    position: relative;
+}
+
+.story-card-discover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.story-image-discover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+.story-info-discover {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+}
+
+.story-title-discover {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.story-description-discover {
+    margin: 0;
+    font-size: 0.7rem;
+    opacity: 0.8;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .library-hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .hero-image {
+        max-width: 60%;
+    }
+
+    .story-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+
+.load-more-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    padding: 0 5.5rem;
+    margin: 4rem;
+}
+
+.load-more-img {
+    width: 50px;
+    height: auto;
+    animation: move-sideways 2s ease-in-out infinite;
+}
+
+@keyframes move-sideways {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+.load-more-section h3 {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 14px;
+}
+
+.load-more-link {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.load-more-link:hover {
+    color: #A5E165;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
 }
