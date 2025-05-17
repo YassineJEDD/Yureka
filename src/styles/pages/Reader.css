@@ -23,7 +23,7 @@
 ========================== */
 .simple-header {
     background: #000000;
-    padding: 0.3rem 2rem;
+    padding: 0.03rem 2rem;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -38,6 +38,15 @@
     margin: 0 auto;
 }
 
+.logo-yureka-reader {
+    width: 130px;
+    height: auto;
+}
+
+.logo-yureka-reader:hover {
+    filter: drop-shadow(0px 0px 15px rgba(145, 255, 0, 2));
+}
+
 .story-title-header {
     font-size: 1.2rem;
     font-weight: bold;
@@ -46,6 +55,16 @@
     flex-grow: 1;
     font-family: 'Press Start 2P', sans-serif;
     margin-left: -90px;
+}
+
+.profile-icon-reader {
+    width: 30px;
+    height: auto;
+    padding-top: 0.65rem;
+}
+
+.profile-icon-reader:hover {
+    filter: drop-shadow(0px 0px 10px rgba(145, 255, 0, 2));
 }
 
 /* =======================
@@ -89,7 +108,7 @@
 ========================== */
 .story-banner {
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 0;
 }
 
 .story-banner-image {
@@ -179,7 +198,6 @@
     margin-right: 4px;
 }
 
-/* Level badge variants */
 .level-badge.newbie {
     background-color: #4CAF50;
 }
@@ -199,9 +217,14 @@
 /* =======================
    STORY READER COMPONENTS
 ========================== */
+
+.content-story-container {
+    margin: 0 auto;
+}
+
 .story-definition-box {
     position: sticky;
-    top: 66px;
+    top: 50px;
     text-align: left;
     width: 100.2%;
 }
@@ -294,22 +317,16 @@
     font-style: italic;
 }
 
-/* Add these styles to your Reader.css file */
-
-/* Style for the definition text */
 .definition-text {
     font-size: 1.2rem;
     color: #fff;
     margin: 0;
 }
 
-/* Add highlight style for active sentence */
 .sentence-reader.active {
     background-color: rgba(165, 225, 101, 0.1);
 }
 
-
-/* Remove the English translation from appearing in the sentence reader */
 .reader .english {
     display: none;
 }

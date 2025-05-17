@@ -38,6 +38,7 @@ export default function Footer() {
                         <ul>
                             <li><a href="#">Privacy Policy</a></li>
                             <li><a href="#">Terms of Use</a></li>
+                            <Link to="/api-test" className="nav-link">API Test</Link>
                         </ul>
                     </div>
 

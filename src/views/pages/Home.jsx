@@ -1,34 +1,90 @@
 import { useEffect, useState } from 'react';
 import Hero from '../components/Hero.jsx';
 import StoryCard from '../components/StoryCard.jsx';
-import { stories } from '../../data/stories.js';
+import { stories } from '../../data/stories.js'; // Keep for images
 import '../../styles/pages/Home.css';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Home() {
     const [newbieStories, setNewbieStories] = useState([]);
     const [explorerStories, setExplorerStories] = useState([]);
     const [sageStories, setSageStories] = useState([]);
     const [grandMasterStories, setGrandMasterStories] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        const newbies = stories.filter(story => story.level === 'newbie');
-        const explorers = stories.filter(story => story.level === 'explorer');
-        const sages = stories.filter(story => story.level === 'sage');
-        const grandMasters = stories.filter(story => story.level === 'grand master');
+        const fetchBooks = async () => {
+            try {
+                const response = await fetch('http://localhost/books');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const books = await response.json();
 
-        setNewbieStories(newbies);
-        setExplorerStories(explorers);
-        setSageStories(sages);
-        setGrandMasterStories(grandMasters);
+                const booksWithImages = books.map(book => {
+                    // Utiliser l'URL Cloudinary si disponible
+                    if (book.image_url) {
+                        return {
+                            ...book,
+                            image: book.image_url
+                        };
+                    }
+
+                    // Fallback sur stories.js (pour la transition)
+                    const matchingStory = stories.find(story =>
+                        story.title === book.title ||
+                        story.id === book.id
+                    );
+
+                    return {
+                        ...book,
+                        image: matchingStory ? matchingStory.image : null
+                    };
+                });
+
+                const newbies = booksWithImages.filter(book => book.level === 'newbie');
+                const explorers = booksWithImages.filter(book => book.level === 'explorer');
+                const sages = booksWithImages.filter(book => book.level === 'sage');
+                const grandMasters = booksWithImages.filter(book => book.level === 'grand master');
+
+                setNewbieStories(newbies);
+                setExplorerStories(explorers);
+                setSageStories(sages);
+                setGrandMasterStories(grandMasters);
+            } catch (err) {
+                setError(err.message);
+                console.error("Error fetching books:", err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchBooks();
+        window.scrollTo(0, 0);
     }, []);
+
+    if (loading) {
+        return (
+            <div className="home-page loading">
+                <div className="loading-indicator">Loading stories...</div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="home-page error">
+                <div className="error-message">Error loading stories: {error}</div>
+            </div>
+        );
+    }
 
     return (
         <div className="home-page">
             <Hero />
-
             <section className="title-home">
-                <h2>Choose the level that <br /> suits you and dive into a<br />new adventure.<span className="title-emoji">✨</span></h2>
+                <h2>Choose the level that <br /> fits you and dive into a<br /> adventure.<span className="title-emoji">✨</span></h2>
             </section>
 
             {/* Newbie Section */}
