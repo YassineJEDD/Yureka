@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap');
+
 .app {
   display: flex;
   flex-direction: column;
@@ -5,11 +7,13 @@
   cursor: url('../../public/cursors/regular-pixel-cursor.png') 0 0, auto;
 }
 
+
+a, button, [role="button"], .clickable, .sentence-reader {
+  cursor: url('../../public/cursors/pointer-pixel-cursor.png') 16 0, pointer !important;
+}
+
 @font-face {
   font-family: 'Press Start 2P';
   src: url('../../public/fonts/PressStart2P.ttf');
 }
 
-a, button, [role="button"], .clickable .sentence-reader {
-  cursor: url('../../public/cursors/pointer-pixel-cursor.png') 0 0, pointer !important;
-}

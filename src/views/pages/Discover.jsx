@@ -1,14 +1,20 @@
-import React, {useEffect, useState} from 'react';
-import { stories } from '../../data/stories'; // Keep for images
+import React, { useEffect, useState } from 'react';
 import '../../styles/pages/Discover.css';
-import {Link} from "react-router-dom";
+import '../../styles/pages/Home.css';
+import { Link } from "react-router-dom";
+import StoryCard from '../components/StoryCard';
+import Loading from '../components/Loading';
 
 export default function Discover() {
     const [filter, setFilter] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
     const [books, setBooks] = useState([]);
+    const [genres, setGenres] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const [carouselIndexes, setCarouselIndexes] = useState({});
+    const [storiesPerView, setStoriesPerView] = useState(3);
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -27,19 +33,27 @@ export default function Discover() {
                             image: book.image_url
                         };
                     }
-
-                    const matchingStory = stories.find(story =>
-                        story.title === book.title ||
-                        story.id === book.id
-                    );
-
-                    return {
-                        ...book,
-                        image: matchingStory ? matchingStory.image : null
-                    };
                 });
 
                 setBooks(booksWithImages);
+
+                const allGenres = Array.from(
+                    new Set(
+                        booksWithImages.flatMap(book =>
+                            Array.isArray(book.genre)
+                                ? book.genre
+                                : (book.genre ? [book.genre] : [])
+                        )
+                    )
+                );
+                setGenres(allGenres);
+
+                const initialIndexes = {};
+                allGenres.forEach(genre => {
+                    initialIndexes[genre] = 0;
+                });
+                setCarouselIndexes(initialIndexes);
+
             } catch (err) {
                 setError(err.message);
                 console.error("Error fetching books:", err);
@@ -52,19 +66,45 @@ export default function Discover() {
         window.scrollTo(0, 0);
     }, []);
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                setStoriesPerView(1);
+            } else if (window.innerWidth <= 1185) {
+                setStoriesPerView(2);
+            } else {
+                setStoriesPerView(3);
+            }
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const filteredStories = books.filter(book => {
-        const matchesFilter = filter === 'all' || book.level.toLowerCase() === filter.toLowerCase();
+        const matchesFilter = filter === 'all' || book.level?.toLowerCase() === filter.toLowerCase();
         const matchesSearch = book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
             book.description.toLowerCase().includes(searchTerm.toLowerCase());
         return matchesFilter && matchesSearch;
     });
 
+    const moveCarousel = (genre, direction, storiesForGenre) => {
+        setCarouselIndexes(prev => {
+            const maxIndex = Math.max(0, Math.ceil(storiesForGenre.length / storiesPerView) - 1);
+            const currentIndex = prev[genre] || 0;
+            let newIndex = currentIndex;
+            if (direction === 'next') {
+                newIndex = Math.min(currentIndex + 1, maxIndex);
+            } else {
+                newIndex = Math.max(currentIndex - 1, 0);
+            }
+            return { ...prev, [genre]: newIndex };
+        });
+    };
+
     if (loading) {
-        return (
-            <div className="discover-page loading">
-                <div className="loading-indicator">Loading library...</div>
-            </div>
-        );
+        return <Loading message="Loading of the library..." className="discover-page" />;
     }
 
     if (error) {
@@ -88,7 +128,7 @@ export default function Discover() {
                     </p>
                 </div>
                 <div className="hero-image-discover">
-                    <img src="/public/Yureka-Assets/yureka-reader.png" alt="Yureka character" />
+                    <img src="/public/Yureka-Assets/yureka-library-banner-discover.png" alt="Yureka Library" />
                 </div>
             </div>
 
@@ -131,7 +171,7 @@ export default function Discover() {
                         className={`filter-button ${filter === 'sage' ? 'active' : ''}`}
                         onClick={() => setFilter('sage')}
                     >
-                        <span className="filter-icon">🧌</span> Sage
+                        <span className="filter-icon">🧙🏼‍♂️</span> Sage
                     </button>
                     <button
                         className={`filter-button ${filter === 'grand master' ? 'active' : ''}`}
@@ -142,35 +182,80 @@ export default function Discover() {
                 </div>
             </div>
 
-            {/* Story Grid */}
-            <div className="story-grid-discover">
-                {filteredStories.length > 0 ? (
-                    filteredStories.map(story => (
-                        <Link to={`/read/${story.id}`} key={story.id} className="story-card-discover">
-                            <img
-                                src={story.image || "/placeholder-story.png"}
-                                alt={story.title}
-                                className="story-image-discover"
-                            />
-                            <div className="story-info-discover">
-                                <h3 className="story-title-discover">{story.title}</h3>
-                                <p className="story-description-discover">{story.description}</p>
+            {/* Sections par genre */}
+            <div className="genre-sections">
+                {genres.map((genre) => {
+                    const storiesForGenre = filteredStories.filter(book =>
+                        Array.isArray(book.genre)
+                            ? book.genre.includes(genre)
+                            : book.genre === genre
+                    );
+                    const currentIndex = carouselIndexes[genre] || 0;
+                    const hasMoreThanOneSlide = storiesForGenre.length > storiesPerView;
+                    const visibleStories = storiesForGenre.slice(
+                        currentIndex * storiesPerView,
+                        (currentIndex * storiesPerView) + storiesPerView
+                    );
+                    const maxIndex = Math.max(0, Math.ceil(storiesForGenre.length / storiesPerView) - 1);
+
+                    return (
+                        <section className="level-section" key={genre}>
+                            <h2>
+                                <img
+                                    src={`/discover-genre-logo/${genre.toLowerCase().replace(/\s+/g, '-')}.png`}
+                                    className="genre-logo"
+                                    style={{ width: 32, height: 32, marginRight: 8, verticalAlign: 'middle' }}
+                                />
+                                {genre}
+                            </h2>
+                            <div className="carousel-container">
+                                {hasMoreThanOneSlide && (
+                                    <button
+                                        className={`carousel-button prev ${currentIndex === 0 ? 'disabled' : ''}`}
+                                        onClick={() => moveCarousel(genre, 'prev', storiesForGenre)}
+                                        disabled={currentIndex === 0}
+                                    >
+                                        <img
+                                            src="/public/Yureka-Assets/prev-button.png"
+                                            alt="Précédent"
+                                            className="carousel-button-image"
+                                        />
+                                    </button>
+                                )}
+
+                                <div className="story-grids-container">
+                                    <div className="story-grid carousel">
+                                        {visibleStories.length > 0 ? (
+                                            visibleStories.map(story => (
+                                                <StoryCard key={story.id} story={story} />
+                                            ))
+                                        ) : (
+                                            <div className="no-results-genre">
+                                                No result, try something else.
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {hasMoreThanOneSlide && (
+                                    <button
+                                        className={`carousel-button next ${currentIndex >= maxIndex ? 'disabled' : ''}`}
+                                        onClick={() => moveCarousel(genre, 'next', storiesForGenre)}
+                                        disabled={currentIndex >= maxIndex}
+                                    >
+                                        <img
+                                            src="/public/Yureka-Assets/next-button.png"
+                                            alt="Suivant"
+                                            className="carousel-button-image"
+                                        />
+                                    </button>
+                                )}
                             </div>
-                        </Link>
-                    ))
-                ) : (
-                    <div className="no-results">No stories match your search criteria</div>
-                )}
+                        </section>
+                    );
+                })}
             </div>
 
-            <section className="load-more-section">
-                <div className="load-more-container">
-                    <img src="/public/Yureka-Assets/discover-more.png" alt="Discover More" className="load-more-img" />
-                    <Link to="/discover" className="load-more-link">
-                        <p>Load more stories</p>
-                    </Link>
-                </div>
-            </section>
         </div>
     );
 }

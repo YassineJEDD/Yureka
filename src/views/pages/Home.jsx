@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import Hero from '../components/Hero.jsx';
 import StoryCard from '../components/StoryCard.jsx';
-import { stories } from '../../data/stories.js'; // Keep for images
 import '../../styles/pages/Home.css';
 import { Link } from "react-router-dom";
+import Loading from '../components/Loading.jsx';
 
 export default function Home() {
     const [newbieStories, setNewbieStories] = useState([]);
@@ -12,6 +12,31 @@ export default function Home() {
     const [grandMasterStories, setGrandMasterStories] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const [newbieIndex, setNewbieIndex] = useState(0);
+    const [explorerIndex, setExplorerIndex] = useState(0);
+    const [sageIndex, setSageIndex] = useState(0);
+    const [grandMasterIndex, setGrandMasterIndex] = useState(0);
+
+    const [storiesPerView, setStoriesPerView] = useState(3);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                setStoriesPerView(1);
+            } else if (window.innerWidth <= 1185) {
+                setStoriesPerView(2);
+            } else {
+                setStoriesPerView(3);
+            }
+        };
+
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -23,7 +48,6 @@ export default function Home() {
                 const books = await response.json();
 
                 const booksWithImages = books.map(book => {
-                    // Utiliser l'URL Cloudinary si disponible
                     if (book.image_url) {
                         return {
                             ...book,
@@ -31,7 +55,6 @@ export default function Home() {
                         };
                     }
 
-                    // Fallback sur stories.js (pour la transition)
                     const matchingStory = stories.find(story =>
                         story.title === book.title ||
                         story.id === book.id
@@ -64,12 +87,76 @@ export default function Home() {
         window.scrollTo(0, 0);
     }, []);
 
-    if (loading) {
-        return (
-            <div className="home-page loading">
-                <div className="loading-indicator">Loading stories...</div>
-            </div>
+    const moveCarousel = (direction, stories, currentIndex, setIndex) => {
+        if (direction === 'next') {
+            setIndex(Math.min(currentIndex + 1, Math.ceil(stories.length / storiesPerView) - 1));
+        } else {
+            setIndex(Math.max(currentIndex - 1, 0));
+        }
+    };
+
+    const LevelSection = ({ title, emoji, description, stories, currentIndex, setIndex }) => {
+        const hasMoreThanOneSlide = stories.length > storiesPerView;
+        const visibleStories = stories.slice(
+            currentIndex * storiesPerView,
+            (currentIndex * storiesPerView) + storiesPerView
         );
+
+        return (
+            <section className="level-section">
+                <h2><span className="home-emoji">{emoji}</span> {title}</h2>
+                <p className="level-description">{description}</p>
+                <div className="carousel-container">
+                    {hasMoreThanOneSlide && (
+                        <button
+                            className={`carousel-button prev ${currentIndex === 0 ? 'disabled' : ''}`}
+                            onClick={() => moveCarousel('prev', stories, currentIndex, setIndex)}
+                            disabled={currentIndex === 0}
+                        >
+                            <img
+                                src="/public/Yureka-Assets/prev-button.png"
+                                alt="Précédent"
+                                className="carousel-button-image"
+                            />
+                        </button>
+                    )}
+
+                    <div className="story-grids-container">
+                        <div className="story-grid carousel">
+                            {visibleStories.length > 0 ? (
+                                visibleStories.map(story => (
+                                    <StoryCard key={story.id} story={story} />
+                                ))
+                            ) : (
+                                [1, 2, 3].map(i => (
+                                    <div key={i} className="story-card placeholder">
+                                        <div className="placeholder-content"></div>
+                                    </div>
+                                ))
+                            )}
+                        </div>
+                    </div>
+
+                    {hasMoreThanOneSlide && (
+                        <button
+                            className={`carousel-button next ${currentIndex >= Math.ceil(stories.length / storiesPerView) - 1 ? 'disabled' : ''}`}
+                            onClick={() => moveCarousel('next', stories, currentIndex, setIndex)}
+                            disabled={currentIndex >= Math.ceil(stories.length / storiesPerView) - 1}
+                        >
+                            <img
+                                src="/public/Yureka-Assets/next-button.png"
+                                alt="Suivant"
+                                className="carousel-button-image"
+                            />
+                        </button>
+                    )}
+                </div>
+            </section>
+        );
+    };
+
+    if (loading) {
+        return <Loading message="Loading of the stories..." className="home-page" />;
     }
 
     if (error) {
@@ -84,92 +171,44 @@ export default function Home() {
         <div className="home-page">
             <Hero />
             <section className="title-home">
-                <h2>Choose the level that <br /> fits you and dive into a<br /> adventure.<span className="title-emoji">✨</span></h2>
+                <h2>Choose the level that <br /> fits you and dive into a<br /> new adventure.<span className="title-emoji">✨</span></h2>
             </section>
 
-            {/* Newbie Section */}
-            <section className="level-section">
-                <h2><span className="home-emoji">🐣</span> Newbie</h2>
-                <p className="level-description">Every Master starts as a Newbie. Begin your journey by reading easy stories and light novels that match your level.</p>
-                <div className="story-grids-container">
-                    <div className="story-grid">
-                        {newbieStories.length > 0 ? (
-                            newbieStories.map(story => (
-                                <StoryCard key={story.id} story={story} />
-                            ))
-                        ) : (
-                            [1, 2, 3].map(i => (
-                                <div key={i} className="story-card placeholder">
-                                    <div className="placeholder-content"></div>
-                                </div>
-                            ))
-                        )}
-                    </div>
-                </div>
-            </section>
+            <LevelSection
+                title="Newbie"
+                emoji="🐣"
+                description="Every Master starts as a Newbie. Begin your journey by reading easy stories and light novels that match your level."
+                stories={newbieStories}
+                currentIndex={newbieIndex}
+                setIndex={setNewbieIndex}
+            />
 
-            {/* Explorer Section */}
-            <section className="level-section">
-                <h2><span className="home-emoji">🗺</span> Explorer</h2>
-                <p className="level-description">Every path leads to discovery. As an Explorer, challenge yourself with longer stories and fresh expressions that push your limits.</p>
-                <div className="story-grids-container">
-                    <div className="story-grid">
-                        {explorerStories.length > 0 ? (
-                            explorerStories.map(story => (
-                                <StoryCard key={story.id} story={story} />
-                            ))
-                        ) : (
-                            [1, 2, 3].map(i => (
-                                <div key={i} className="story-card placeholder">
-                                    <div className="placeholder-content"></div>
-                                </div>
-                            ))
-                        )}
-                    </div>
-                </div>
-            </section>
+            <LevelSection
+                title="Explorer"
+                emoji="🗺"
+                description="Every path leads to discovery. As an Explorer, challenge yourself with longer stories and fresh expressions that push your limits."
+                stories={explorerStories}
+                currentIndex={explorerIndex}
+                setIndex={setExplorerIndex}
+            />
 
-            {/* Sage Section */}
-            <section className="level-section">
-                <h2><span className="home-emoji">🧌</span> Sage</h2>
-                <p className="level-description">Wisdom comes with practice. As a Sage, dive into deeper narratives and refined language to sharpen your understanding.</p>
-                <div className="story-grids-container">
-                    <div className="story-grid">
-                        {sageStories.length > 0 ? (
-                            sageStories.map(story => (
-                                <StoryCard key={story.id} story={story} />
-                            ))
-                        ) : (
-                            [1, 2, 3].map(i => (
-                                <div key={i} className="story-card placeholder">
-                                    <div className="placeholder-content"></div>
-                                </div>
-                            ))
-                        )}
-                    </div>
-                </div>
-            </section>
+            <LevelSection
+                title="Sage"
+                emoji="🧙🏼‍♂️"
+                description="Wisdom comes with practice. As a Sage, dive into deeper narratives and refined language to sharpen your understanding."
+                stories={sageStories}
+                currentIndex={sageIndex}
+                setIndex={setSageIndex}
+            />
 
-            {/* Grand Master Section */}
-            <section className="level-section">
-                <h2><span className="home-emoji">🐉</span> Grand Master</h2>
-                <p className="level-description">Mastery is a journey, not a destination. As a Grand Master, immerse yourself in authentic stories with the depth and nuance of <br/> native-level Chinese.</p>
-                <div className="story-grids-container">
-                    <div className="story-grid">
-                        {grandMasterStories.length > 0 ? (
-                            grandMasterStories.map(story => (
-                                <StoryCard key={story.id} story={story} />
-                            ))
-                        ) : (
-                            [1, 2, 3].map(i => (
-                                <div key={i} className="story-card placeholder">
-                                    <div className="placeholder-content"></div>
-                                </div>
-                            ))
-                        )}
-                    </div>
-                </div>
-            </section>
+            <LevelSection
+                title="Grand Master"
+                emoji="🐉"
+                description="Mastery is a journey, not a destination. As a Grand Master, immerse yourself in authentic stories with the depth and nuance of native-level Chinese."
+                stories={grandMasterStories}
+                currentIndex={grandMasterIndex}
+                setIndex={setGrandMasterIndex}
+            />
 
             <section className="discover-more-section">
                 <div className="discover-more-container">

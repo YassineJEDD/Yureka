@@ -18,6 +18,12 @@ export default function StoryCard({ story }) {
             <div className="story-card-content">
                 <h3>{story.title}</h3>
                 <p>{story.description}</p>
+
+                <div className="story-card-badges">
+                    <span className="story-badge genre-badge">
+                        {story.genre}
+                    </span>
+                </div>
             </div>
         </Link>
     );

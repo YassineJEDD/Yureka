@@ -53,7 +53,47 @@ footer {
 }
 
 .footer-column ul li a:hover {
-    filter: drop-shadow(0px 0px 15px rgba(145, 255, 0, 2));
+    color: #bfff6f;
+}
+
+.adventure-checkpoint:hover {
+    /* Fallback color in case the gradient doesn't work */
+    color: #ff4646;
+
+    /* Add all browser prefixes for better compatibility */
+    background-image: linear-gradient(
+            to right,
+            #ffb3b3, #ffd6a5, #ffffb3, #c1f0c1, #b3ffff, #b3c6ff, #d7b3ff, #ffb3b3);
+    background-size: 200% 100%;
+
+    /* Add all necessary browser prefixes */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+    /* Animation with prefixes */
+    -webkit-animation: rainbow-move 3s linear infinite;
+    animation: rainbow-move 3s linear infinite;
+}
+
+/* Add webkit prefix version of the keyframes too */
+@-webkit-keyframes rainbow-move {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+@keyframes rainbow-move {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
 }
 
 .footer-bottom {

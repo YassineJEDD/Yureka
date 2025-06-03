@@ -42,7 +42,6 @@
     50% { border-color: white }
 }
 
-
 .hero p {
     font-size: 15px;
     margin-bottom: 2rem;
@@ -52,4 +51,72 @@
 .logo-hero-y {
     width: 280px;
     height: auto;
+}
+
+@media (max-width: 1024px) {
+    .hero {
+        padding: 3rem 5rem;
+    }
+
+    .hero-content {
+        padding-right: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 2rem;
+        flex-direction: column;
+    }
+
+    .hero-content {
+        padding-right: 0;
+        margin-top: 1.5rem;
+    }
+
+    .librarian-owl {
+        width: 200px;
+    }
+
+    .logo-hero-y {
+        width: 200px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero {
+        padding: 1.5rem 1rem;
+        flex-direction: column;
+    }
+
+    .librarian-owl {
+        width: 150px;
+        order: -1;
+        margin-bottom: 1.5rem;
+    }
+
+    .typing {
+        font-size: 16px;
+        order: 1;
+        animation: typing 3s steps(10, end) forwards, blink-caret 0.7s step-end infinite;
+    }
+
+    .logo-hero-y {
+        width: 120px;
+        order: 2;
+        margin: 1rem 0;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .hero p {
+        width: 100%;
+        order: 3;
+        margin-top: 1rem;
+        text-align: center;
+    }
 }

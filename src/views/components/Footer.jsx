@@ -27,9 +27,9 @@ export default function Footer() {
                     <div className="footer-column">
                         <h4>CHECKPOINTS</h4>
                         <ul>
-                            <li><a href="#">Discover</a></li>
+                            <li><a href="#" className="adventure-checkpoint">Adventure</a></li>
+                            <li><a href="/discover">Discover</a></li>
                             <li><a href="#">Flashcards</a></li>
-                            <li><a href="#">Feedback</a></li>
                         </ul>
                     </div>
 
@@ -38,7 +38,6 @@ export default function Footer() {
                         <ul>
                             <li><a href="#">Privacy Policy</a></li>
                             <li><a href="#">Terms of Use</a></li>
-                            <Link to="/api-test" className="nav-link">API Test</Link>
                         </ul>
                     </div>
 
