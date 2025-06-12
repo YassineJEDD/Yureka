@@ -1,0 +1,100 @@
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.story-grid.carousel {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    transition: transform 0.3s ease;
+    justify-content: center;
+}
+
+.carousel-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    z-index: 2;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    padding: 0;
+}
+
+.carousel-button:active:not(.disabled) {
+    transform: scale(0.9);
+    opacity: 0.8;
+}
+
+.carousel-button-image {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.15s ease;
+}
+
+.carousel-button:active:not(.disabled) .carousel-button-image {
+    transform: translateY(2px);
+}
+
+.carousel-button.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.carousel-button.prev {
+    left: -80px;
+}
+
+.carousel-button.next {
+    right: -80px;
+}
+
+@media (max-width: 1400px) {
+    .carousel-button.prev {
+        left: -50px;
+    }
+
+    .carousel-button.next {
+        right: -50px;
+    }
+}
+
+@media (max-width: 1320px) {
+    .carousel-button.prev {
+        left: 5px;
+    }
+
+    .carousel-button.next {
+        right: 5px;
+    }
+}
+
+@media (max-width: 1185px) {
+    .carousel-container {
+        display: grid;
+        grid-template-areas:
+            "content content"
+            "prev next";
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        gap: 1rem;
+    }
+
+    .carousel-button.prev {
+        grid-area: prev;
+        position: static;
+        justify-self: end;
+        margin-right: 1rem;
+    }
+
+    .carousel-button.next {
+        grid-area: next;
+        position: static;
+        justify-self: start;
+        margin-left: 1rem;
+    }
+}

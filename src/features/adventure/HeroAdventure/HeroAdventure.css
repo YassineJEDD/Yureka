@@ -1,0 +1,176 @@
+.hero-adventure {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 8rem;
+}
+
+.hero-adventure-container {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-adventure-image {
+    max-width: 1000px;
+    height: auto;
+}
+
+.hero-adventure-button {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.hero-adventure-button img {
+    width: 130px;
+    height: auto;
+}
+
+.hero-adventure-button:hover {
+    transform: translateX(-50%) scale(1.05);
+}
+
+.hero-adventure-close {
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.hero-adventure-close img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.2s ease;
+}
+
+.hero-adventure-close:hover img {
+    transform: scale(1.1);
+}
+
+@media (max-width: 1200px) {
+    .hero-adventure-image {
+        max-width: 800px;
+        height: auto;
+    }
+
+    .hero-adventure-button img {
+        width: 100px;
+        height: auto;
+    }
+
+    .hero-adventure-close img {
+        width: 35px;
+        height: auto;
+        transition: transform 0.2s ease;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-adventure-image {
+        max-width: 650px;
+        height: auto;
+    }
+
+    .hero-adventure-button img {
+        width: 85px;
+        height: auto;
+    }
+
+    .hero-adventure-close img {
+        width: 30px;
+        height: auto;
+    }
+
+    .hero-adventure-close {
+        top: 25px;
+        right: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-adventure-image {
+        max-width: 500px;
+        height: auto;
+    }
+
+    .hero-adventure-button img {
+        width: 70px;
+        height: auto;
+    }
+
+    .hero-adventure-button {
+        bottom: 30px;
+    }
+
+    .hero-adventure-close img {
+        width: 25px;
+        height: auto;
+    }
+
+    .hero-adventure-close {
+        top: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-adventure-image {
+        max-width: 400px;
+        height: auto;
+    }
+
+    .hero-adventure-button img {
+        width: 60px;
+        height: auto;
+    }
+
+    .hero-adventure-button {
+        bottom: 20px;
+    }
+
+    .hero-adventure-close img {
+        width: 20px;
+        height: auto;
+    }
+
+    .hero-adventure-close {
+        top: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero-adventure-image {
+        max-width: 320px;
+        height: auto;
+    }
+
+    .hero-adventure-button img {
+        width: 50px;
+        height: auto;
+    }
+
+    .hero-adventure-button {
+        bottom: 15px;
+    }
+
+    .hero-adventure-close img {
+        width: 18px;
+        height: auto;
+    }
+
+    .hero-adventure-close {
+        top: 10px;
+        right: 10px;
+    }
+}

@@ -1,0 +1,74 @@
+.floating-menu {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #396200;
+    border-radius: 8px;
+    padding: 5px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+    top: 550px;
+}
+
+.drag-handle {
+    width: 100%;
+    height: 20px;
+    cursor: url('../../../../assets/cursors/openhand-pixel-cursor.png')17 17, auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.drag-handle:active {
+    cursor: url('../../../../assets/cursors/closedhand-pixel-cursor.png')17 17, auto;
+}
+
+.drag-dots {
+    display: flex;
+    gap: 3px;
+}
+
+.drag-dots span {
+    width: 4px;
+    height: 4px;
+    background-color: #666;
+    border-radius: 50%;
+}
+
+.pinyin-toggle {
+    background: rgba(57, 98, 0, 0.3);
+    border: 1px solid #396200;
+    color: #fff;
+    padding: 8px 8px;
+    border-radius: 8px;
+    cursor: url('../../../../assets/cursors/pointer-pixel-cursor.png')19 0, auto;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    min-width: 60px;
+}
+
+.pinyin-toggle:hover {
+    background: rgba(57, 98, 0, 0.5);
+    border-color: #91ff00;
+    transform: translateY(-1px);
+}
+
+.pinyin-toggle.active {
+    background: #396200;
+    border-color: #91ff00;
+    color: #91ff00;
+    box-shadow: 0 0 10px rgba(145, 255, 0, 0.3);
+}
+
+@media (max-width: 1130px) {
+    .floating-menu,
+    .story-definition-box {
+        display: none !important;
+    }
+}

@@ -1,0 +1,126 @@
+.library-hero {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1A2214;
+    padding: 5rem;
+    margin: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #3B603F;
+}
+
+.hero-content {
+    max-width: 100%;
+}
+
+.library-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.hero-subline {
+    padding: 0;
+    margin: 0;
+}
+
+.hero-text {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.hero-image-discover {
+    max-width: 100%;
+}
+
+.hero-image-discover img {
+    max-width: 100%;
+    width: 500px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: -75px;
+    margin-top: -75px;
+}
+
+@media (max-width: 1185px) {
+    .library-hero {
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        padding: 4rem 1rem;
+    }
+
+    .hero-image-discover img {
+        width: 300px;
+        height: auto;
+        margin-bottom: -90px;
+    }
+    .hero-content {
+        max-width: 250px;
+        margin-bottom: 1rem;
+        position: relative;
+    }
+    .library-hero h1 {
+        font-size: 1.2rem;
+    }
+    .hero-subline {
+        margin: -15px;
+    }
+    .hero-text {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .library-hero {
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+    .hero-image-discover img {
+        width: 260px;
+        height: auto;
+        margin-bottom: -90px;
+    }
+    .hero-content {
+        max-width: 250px;
+        margin-bottom: 1rem;
+        position: relative;
+    }
+    .library-hero h1 {
+        font-size: 1.2rem;
+    }
+    .hero-subline {
+        margin: -15px;
+    }
+    .hero-text {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .library-hero {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+    .hero-image-discover img {
+        width: 200px;
+        height: auto;
+        margin-bottom: -20px;
+        margin-top: -10px;
+    }
+    .library-hero h1 {
+        font-size: 0.9rem;
+    }
+    .hero-subline {
+        margin: -25px;
+    }
+    .hero-text {
+        font-size: 0.5rem;
+    }
+}

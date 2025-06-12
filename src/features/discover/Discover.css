@@ -1,0 +1,22 @@
+.discover-page {
+    color: white;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Press Start 2P', system-ui, sans-serif;
+    padding-top: 53px;
+}
+
+.genre-sections {
+    width: 100%;
+}
+
+.error-message {
+    color: #ff6666;
+    font-size: 1rem;
+    text-align: center;
+    margin: 3rem 0;
+    padding: 1rem;
+    border: 1px solid #ff6666;
+    border-radius: 4px;
+}
+

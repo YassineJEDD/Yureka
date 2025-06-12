@@ -1,0 +1,61 @@
+.discover-more-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    padding: 0 5.5rem;
+}
+
+.discover-more-img {
+    width: 50px;
+    height: auto;
+    animation: move-sideways 2s ease-in-out infinite;
+}
+
+@keyframes move-sideways {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+.discover-more-section h3 {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 14px;
+}
+
+.discover-more-link {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.discover-more-link:hover {
+    color: #A5E165;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+}
+
+@media (max-width: 1185px) {
+    .discover-more-img {
+        width: 40px;
+    }
+}
+
+@media (max-width: 880px) {
+    .discover-more-container {
+        gap: 0.8rem;
+    }
+
+    .discover-more-img {
+        width: 30px;
+    }
+
+    .discover-more-link {
+        font-size: 9px;
+    }
+}

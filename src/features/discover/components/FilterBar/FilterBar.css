@@ -1,0 +1,78 @@
+.story-filters-discover {
+    margin-bottom: 2rem;
+}
+
+.filter-heading {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-icon {
+    display: inline-block;
+    margin-right: 4px;
+}
+
+.level-filters {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-button {
+    background-color: transparent;
+    border: 1px solid #396200;
+    border-radius: 20px;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-family: inherit;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.filter-button:hover {
+    background-color: #333;
+}
+
+.filter-button.active {
+    background-color: #1a1a1a;
+    border-color: #fff;
+}
+
+@media (max-width: 1185px) and (min-width: 769px) {
+    .story-filters-discover {
+        margin-left: 2rem;
+        margin-right: 0;
+        font-size: 0.95rem;
+        padding: 0.5rem 0.5rem;
+    }
+    .level-filters {
+        gap: 0.7rem;
+    }
+    .filter-button {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .story-filters-discover {
+        margin-left: 1rem;
+        margin-right: 0;
+        font-size: 0.85rem;
+        padding: 0.3rem 0.2rem;
+    }
+    .level-filters {
+        gap: 0.5rem;
+    }
+    .filter-button {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+}

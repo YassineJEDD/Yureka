@@ -1,0 +1,105 @@
+.story-definition-box {
+    position: sticky;
+    top: 50px;
+    text-align: left;
+    width: 100.2%;
+    z-index: 10;
+}
+
+.sentence-definition {
+    width: 100%;
+    background: #000;
+    border: 0.094rem solid rgba(57, 98, 0, 0.5);
+    border-top-width: 0.15rem;
+    border-bottom-width: 0.01rem;
+    margin: 0;
+    padding: 15px 30px;
+    box-sizing: border-box;
+    position: relative;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.sentence-definition::before {
+    content: "Sentence definition";
+    position: absolute;
+    top: 8px;
+    left: 30px;
+    font-size: 0.7rem;
+    opacity: 0.5;
+    color: #fff;
+}
+
+.definition-text {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0;
+}
+
+.word-definition {
+    width: 100%;
+    background: #000;
+    border: 0.094rem solid rgba(57, 98, 0, 0.5);
+    border-bottom-width: 0.15rem;
+    margin: 0;
+    padding: 15px 30px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px -3px rgba(57, 98, 0, 0.53);
+    position: relative;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.word-definition::before {
+    content: "Word definition";
+    position: absolute;
+    top: 8px;
+    left: 30px;
+    font-size: 0.7rem;
+    opacity: 0.5;
+    color: #fff;
+}
+
+.word-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.word-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.chinese-word {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #91ff00;
+}
+
+.pinyin {
+    font-size: 1.1rem;
+    color: #aaa;
+    font-style: italic;
+}
+
+.english-definition {
+    font-size: 1.2rem;
+    color: #fff;
+    margin: 0;
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+.part-of-speech {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    flex-shrink: 0;
+}

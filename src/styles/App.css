@@ -4,16 +4,16 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  cursor: url('../../public/cursors/regular-pixel-cursor.png') 0 0, auto;
+  cursor: url('../assets/cursors/regular-pixel-cursor.png') 0 0, auto;
 }
 
 
 a, button, [role="button"], .clickable, .sentence-reader {
-  cursor: url('../../public/cursors/pointer-pixel-cursor.png') 16 0, pointer !important;
+  cursor: url('../assets/cursors/pointer-pixel-cursor.png') 16 0, pointer !important;
 }
 
 @font-face {
   font-family: 'Press Start 2P';
-  src: url('../../public/fonts/PressStart2P.ttf');
+  src: url('../assets/fonts/PressStart2P.ttf');
 }
 
