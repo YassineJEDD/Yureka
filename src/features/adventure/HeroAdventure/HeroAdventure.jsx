@@ -2,6 +2,7 @@ import heroAdventureImage from '../../../assets/Adventure-Assets/hero-adventure.
 import startButtonImage from '../../../assets/Adventure-Assets/start-hero-adventure.png';
 import closeButtonImage from '../../../assets/Adventure-Assets/black-X.png';
 import './HeroAdventure.css';
+import {Link} from "react-router-dom";
 
 export default function HeroAdventure({ onClose }) {
     return (
@@ -13,10 +14,12 @@ export default function HeroAdventure({ onClose }) {
                     className="hero-adventure-image"
                 />
                 <button className="hero-adventure-button">
-                    <img
-                        src={startButtonImage}
-                        alt="Start Adventure"
-                    />
+                    <Link to="/adventure">
+                        <img
+                            src={startButtonImage}
+                            alt="Start Adventure"
+                        />
+                    </Link>
                 </button>
                 <button className="hero-adventure-close" onClick={onClose}>
                     <img
