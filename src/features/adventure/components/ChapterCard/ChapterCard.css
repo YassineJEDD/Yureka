@@ -1,0 +1,272 @@
+.chapter-card-link {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chapter-card-link:hover {
+    transform: translateY(-5px);
+}
+
+.chapter-card {
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 900px;
+    min-height: 250px;
+    position: relative;
+}
+
+.chapter-content {
+    padding-top: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.chapter-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.chapter-id {
+    font-size: 0.9rem;
+    color: #000000;
+    opacity: 0.8;
+}
+
+.chapter-title {
+    font-size: 1.4rem;
+    margin: 0;
+    color: #000000;
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+.chapter-card .chapter-description {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.09rem;
+    line-height: 1.6;
+    color: #000000;
+    max-width: 400px;
+    margin: 0;
+    padding-bottom: 6px;
+    font-weight: 600;
+}
+
+@media (max-width: 1120px) {
+    .chapter-card-link {
+        max-width: 750px;
+    }
+
+    .chapter-card {
+        max-width: 750px;
+        min-height: 280px;
+    }
+
+    .chapter-card .chapter-description {
+        font-size: 0.95rem;
+        max-width: 350px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+@media (max-width: 950px) {
+    .chapter-card-link {
+        max-width: 650px;
+    }
+
+    .chapter-card {
+        max-width: 650px;
+        min-height: 260px;
+        padding: 1.5rem;
+    }
+
+    .chapter-content {
+        padding-top: 3.5rem;
+    }
+
+    .chapter-title {
+        font-size: 1.2rem;
+    }
+
+    .chapter-card .chapter-description {
+        font-size: 0.9rem;
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 750px) {
+    .chapter-card-link {
+        max-width: 550px;
+    }
+
+    .chapter-card {
+        max-width: 550px;
+        min-height: 240px;
+        padding: 1.2rem;
+    }
+
+    .chapter-content {
+        padding-top: 2.5rem;
+    }
+
+    .chapter-title {
+        font-size: 1.1rem;
+    }
+
+    .chapter-card .chapter-description {
+        font-size: 0.85rem;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 650px) {
+    .chapter-card-link {
+        max-width: 450px;
+    }
+
+    .chapter-card {
+        max-width: 450px;
+        min-height: 220px;
+        padding: 1rem;
+    }
+
+    .chapter-content {
+        padding-top: 2rem;
+    }
+
+    .chapter-id {
+        font-size: 0.8rem;
+    }
+
+    .chapter-title {
+        font-size: 1rem;
+    }
+
+    .chapter-card .chapter-description {
+        font-size: 0.8rem;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 540px) {
+    .chapter-card-link {
+        max-width: 400px;
+    }
+
+    .chapter-card {
+        max-width: 400px;
+        min-height: 200px;
+        padding: 0.8rem;
+    }
+
+    .chapter-content {
+        padding-top: 1.5rem;
+    }
+
+    .chapter-title {
+        font-size: 0.9rem;
+    }
+
+    .chapter-card .chapter-description {
+        font-size: 0.75rem;
+        max-width: 220px;
+    }
+}
+
+@media (max-width: 450px) {
+    .chapter-card-link {
+        max-width: 350px;
+    }
+
+    .chapter-card {
+        max-width: 350px;
+        min-height: 180px;
+        padding: 0.6rem;
+    }
+
+    .chapter-content {
+        padding-top: 1rem;
+    }
+
+    .chapter-id {
+        font-size: 0.7rem;
+    }
+
+    .chapter-title {
+        font-size: 0.8rem;
+    }
+
+    .chapter-card .chapter-description {
+        font-size: 0.7rem;
+        max-width: 200px;
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 380px) {
+    .chapter-card-link {
+        max-width: 320px;
+    }
+
+    .chapter-card {
+        max-width: 320px;
+        min-height: 160px;
+        padding: 0.5rem;
+    }
+
+    .chapter-content {
+        padding-top: 0.8rem;
+    }
+
+    .chapter-title {
+        font-size: 0.75rem;
+    }
+
+    .chapter-card .chapter-description {
+        font-size: 0.65rem;
+        max-width: 180px;
+    }
+}
+
+@media (max-width: 320px) {
+    .chapter-card-link {
+        max-width: 290px;
+    }
+
+    .chapter-card {
+        max-width: 290px;
+        min-height: 140px;
+        padding: 0.4rem;
+    }
+
+    .chapter-content {
+        padding-top: 0.6rem;
+    }
+
+    .chapter-id {
+        font-size: 0.6rem;
+    }
+
+    .chapter-title {
+        font-size: 0.7rem;
+    }
+
+    .chapter-card .chapter-description {
+        font-size: 0.6rem;
+        max-width: 160px;
+        line-height: 1.3;
+    }
+}

@@ -1,0 +1,166 @@
+.levels-page {
+    color: white;
+    margin: 0;
+    font-family: 'Press Start 2P', system-ui, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.levels-header {
+    text-align: center;
+    padding: 1vh 2vw;
+    background: rgba(26, 34, 20, 0.9);
+    border-bottom: 2px solid #396200;
+    position: relative;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.back-button {
+    display: inline-block;
+    color: #91ff00;
+    text-decoration: none;
+    font-size: min(0.8rem, 2vh);
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 2vw;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.back-button:hover {
+    color: #bfff6f;
+    transform: translateY(-50%) translateX(-5px);
+}
+
+.levels-header h1 {
+    font-size: min(1.5rem, 3vh);
+    margin-bottom: 0.5vh;
+    color: #A5E165;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.chapter-description {
+    font-family: 'Nunito', sans-serif;
+    font-size: min(1rem, 2vh);
+    color: #b0b0b0;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+.levels-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 1vh 2vw;
+}
+
+.chapter-levels-card {
+    width: 100%;
+    max-width: min(460px, 90vw, 70vh);
+    position: relative;
+    text-align: center;
+}
+
+.chapter-levels-image {
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 20vh);
+    object-fit: contain;
+}
+
+.levels-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: min(2rem, 3vh);
+}
+
+.levels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: min(1rem, 2vh);
+    max-width: 80%;
+}
+
+.level-10-container {
+    margin-top: min(-1rem, -1vh);
+}
+
+@media (max-width: 1000px) {
+    .back-button {
+        font-size: min(0.67rem);
+        left: 3vw;
+    }
+}
+
+@media (max-width: 850px) {
+
+    .back-button {
+        font-size: min(2rem);
+        overflow: hidden;
+        white-space: nowrap;
+        width: 1em;
+    }
+
+    .back-button:hover {
+        width: 1em;
+        transform: translateY(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .levels-header h1 {
+        font-size: min(1.2rem, 2.5vh);
+    }
+
+    .chapter-description {
+        font-size: min(0.9rem, 1.8vh);
+    }
+
+    .levels-grid {
+        gap: min(0.8rem, 1.5vh);
+    }
+
+    .back-button {
+        font-size: min(1.3rem);
+    }
+}
+
+@media (max-height: 600px) {
+    .levels-header {
+        padding: 0.5vh 2vw;
+    }
+
+    .levels-header h1 {
+        margin-bottom: 0.3vh;
+    }
+
+    .levels-overlay {
+        gap: min(1rem, 2vh);
+    }
+}
+
+@media (min-aspect-ratio: 21/9) {
+    .chapter-levels-card {
+        max-width: min(460px, 50vw, 70vh);
+    }
+}
+
+@media (orientation: portrait) and (max-aspect-ratio: 3/4) {
+    .chapter-levels-card {
+        max-width: min(90vw, 50vh);
+    }
+}

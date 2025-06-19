@@ -1,0 +1,128 @@
+.level-square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: min(50px, 8vw, 8vh);
+    height: min(50px, 8vw, 8vh);
+    border: 2px solid #396200;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.level-square {
+    --hover-bg-color: rgba(57, 98, 0, 0.25);
+    --hover-border-color: #396200;
+}
+
+.level-square:hover {
+    transform: scale(1.05);
+    background-color: var(--hover-bg-color);
+    border-color: var(--hover-border-color);
+    box-shadow: 0 0 10px var(--hover-border-color);
+}
+
+.level-square::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+            45deg,
+            transparent,
+            rgba(145, 255, 0, 0.1),
+            transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.level-square:hover::before {
+    opacity: 1;
+    animation: shine 0.5s ease;
+}
+
+@keyframes shine {
+    0% {
+        left: -50%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+.level-number {
+    font-family: 'Press Start 2P', monospace;
+    font-size: min(1rem, 2vw, 2vh);
+    color: #396200;
+    position: relative;
+    z-index: 1;
+}
+
+.level-10 {
+    width: min(60px, 10vw, 10vh);
+    height: min(60px, 10vw, 10vh);
+}
+
+.level-10 .level-number {
+    font-size: min(1.2rem, 2.5vw, 2.5vh);
+}
+
+@media (max-width: 768px) {
+    .level-square {
+        width: min(40px, 10vw, 7vh);
+        height: min(40px, 10vw, 7vh);
+    }
+
+    .level-number {
+        font-size: min(0.8rem, 2.5vw, 1.8vh);
+    }
+
+    .level-10 {
+        width: min(50px, 12vw, 9vh);
+        height: min(50px, 12vw, 9vh);
+    }
+
+    .level-10 .level-number {
+        font-size: min(1rem, 3vw, 2.2vh);
+    }
+}
+
+@media (max-width: 480px) or (max-height: 600px) {
+    .level-square {
+        width: min(35px, 12vw, 6vh);
+        height: min(35px, 12vw, 6vh);
+        border-width: 1px;
+    }
+
+    .level-number {
+        font-size: min(0.7rem, 3vw, 1.5vh);
+    }
+
+    .level-10 {
+        width: min(45px, 15vw, 8vh);
+        height: min(45px, 15vw, 8vh);
+    }
+
+    .level-10 .level-number {
+        font-size: min(0.9rem, 3.5vw, 2vh);
+    }
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+    .level-square {
+        width: min(35px, 6vw, 10vh);
+        height: min(35px, 6vw, 10vh);
+    }
+
+    .level-10 {
+        width: min(45px, 8vw, 12vh);
+        height: min(45px, 8vw, 12vh);
+    }
+}

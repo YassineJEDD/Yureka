@@ -1,0 +1,199 @@
+.adventure-page {
+    color: white;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Press Start 2P', system-ui, sans-serif;
+    padding-top: 53px;
+    min-height: 100vh;
+}
+
+.adventure-page.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+}
+
+.error-message {
+    color: #ff6666;
+    font-size: 1rem;
+    text-align: center;
+    margin: 3rem 0;
+    padding: 1rem;
+    border: 1px solid #ff6666;
+    border-radius: 4px;
+}
+
+.chapters-container {
+    padding: 2rem;
+}
+
+.chapters-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+    align-items: center;
+    width: 100%;
+    margin-left: -25px;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.chapters-title {
+    display: block;
+    padding: 3rem;
+    width: 400px;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatLeft {
+    0% {
+        transform: translateY(0) scaleX(-1);
+    }
+    50% {
+        transform: translateY(-10px) scaleX(-1);
+    }
+    100% {
+        transform: translateY(0) scaleX(-1);
+    }
+}
+
+.title-dragon {
+    height: 120px;
+    width: auto;
+}
+
+.left-dragon {
+    margin-right: 1rem;
+    transform: scaleX(-1);
+    transform-origin: center center;
+    animation: floatLeft 3s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+.right-dragon {
+    margin-left: 1rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@media (max-width: 1025px) {
+    .chapters-title {
+        width: 300px;
+    }
+
+    .title-dragon {
+        height: 110px;
+    }
+
+    .chapters-list {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 888px) {
+    .chapters-title {
+        width: 290px;
+        padding: 2rem;
+    }
+
+    .title-dragon {
+        height: 100px;
+    }
+
+    .chapters-list {
+        gap: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .chapters-title {
+        width: 280px;
+        padding: 1rem;
+    }
+
+    .title-dragon {
+        height: 100px;
+    }
+
+    .chapters-list {
+        gap: 1.6rem;
+        margin-left: -10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .chapters-title {
+        width: 250px;
+        padding: 0.5rem;
+    }
+
+    .title-dragon {
+        height: 80px;
+    }
+
+    .chapters-list {
+        gap: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .chapters-title {
+        width: 195px;
+        padding: 0.3rem;
+    }
+
+    .title-dragon {
+        height: 65px;
+    }
+
+    .chapters-list {
+        gap: 1.2rem;
+        margin-left: -5px
+    }
+}
+
+@media (max-width: 360px) {
+    .chapters-title {
+        width: 180px;
+    }
+
+    .title-dragon {
+        height: 70px;
+    }
+
+    .chapters-list {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 340px) {
+    .chapters-title {
+        width: 150px;
+        padding: 0.1rem;
+    }
+
+    .title-dragon {
+        height: 50px;
+    }
+
+    .chapters-list {
+        gap: 0.8rem;
+    }
+}

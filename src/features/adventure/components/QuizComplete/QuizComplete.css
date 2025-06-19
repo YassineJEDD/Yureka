@@ -1,0 +1,177 @@
+.quiz-complete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    font-family: 'Press Start 2P', system-ui, sans-serif;
+    overflow: hidden;
+}
+
+.complete-content {
+    text-align: center;
+    background: #1A2214;
+    border: 3px solid #91ff00;
+    border-radius: 16px;
+    padding: min(3rem, 4vh) min(3rem, 4vw);
+    max-width: min(500px, 90vw, 80vh);
+    box-shadow: 0 0 30px rgba(145, 255, 0, 0.3);
+}
+
+.trophy-icon {
+    font-size: min(4rem, 8vh);
+    margin-bottom: min(1.5rem, 3vh);
+    animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.complete-content h1 {
+    font-size: min(1.8rem, 3.5vh);
+    color: #91ff00;
+    margin-bottom: min(1rem, 2vh);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.complete-message {
+    font-family: 'Nunito', sans-serif;
+    font-size: min(1.1rem, 2.2vh);
+    margin-bottom: min(2rem, 4vh);
+    color: #b0b0b0;
+}
+
+.complete-stats {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: min(1.5rem, 3vh) min(1.5rem, 3vw);
+    margin-bottom: min(2rem, 4vh);
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-label {
+    font-size: min(0.8rem, 1.6vh);
+    color: #b0b0b0;
+}
+
+.stat-value {
+    font-size: min(1.2rem, 2.4vh);
+    color: #91ff00;
+}
+
+.continue-button {
+    background-color: #91ff00;
+    color: #1A2214;
+    border: none;
+    padding: min(1rem, 2vh) min(2rem, 4vw);
+    border-radius: 8px;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: min(0.8rem, 1.6vh);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.continue-button:hover {
+    background-color: #bfff6f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(145, 255, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+    .complete-content {
+        padding: min(2rem, 3vh) min(2rem, 3vw);
+    }
+
+    .trophy-icon {
+        font-size: min(3rem, 6vh);
+    }
+
+    .complete-content h1 {
+        font-size: min(1.4rem, 3vh);
+    }
+
+    .complete-message {
+        font-size: min(1rem, 2vh);
+    }
+
+    .stat-label {
+        font-size: min(0.7rem, 1.4vh);
+    }
+
+    .stat-value {
+        font-size: min(1rem, 2vh);
+    }
+
+    .continue-button {
+        font-size: min(0.7rem, 1.4vh);
+        padding: min(0.8rem, 1.6vh) min(1.5rem, 3vw);
+    }
+}
+
+@media (max-width: 480px) {
+    .complete-content {
+        padding: min(1.5rem, 2.5vh) min(1.5rem, 2.5vw);
+    }
+
+    .complete-content h1 {
+        font-size: min(1.2rem, 2.5vh);
+    }
+
+    .continue-button {
+        font-size: min(0.6rem, 1.2vh);
+    }
+}
+
+/* Landscape on mobile */
+@media (orientation: landscape) and (max-height: 600px) {
+    .complete-content {
+        padding: min(2rem, 5vh) min(3rem, 4vw);
+        max-width: min(500px, 70vw, 90vh);
+    }
+
+    .trophy-icon {
+        font-size: min(3rem, 10vh);
+        margin-bottom: min(1rem, 4vh);
+    }
+
+    .complete-content h1 {
+        font-size: min(1.4rem, 5vh);
+    }
+
+    .complete-message {
+        margin-bottom: min(1.5rem, 6vh);
+    }
+
+    .complete-stats {
+        margin-bottom: min(1.5rem, 6vh);
+    }
+}
+
+/* Very small height */
+@media (max-height: 500px) {
+    .trophy-icon {
+        font-size: min(2.5rem, 12vh);
+        margin-bottom: min(0.5rem, 3vh);
+    }
+
+    .complete-content h1 {
+        font-size: min(1rem, 5vh);
+        margin-bottom: min(0.5rem, 2.5vh);
+    }
+
+    .complete-stats {
+        padding: min(1rem, 5vh) min(1rem, 3vw);
+    }
+}

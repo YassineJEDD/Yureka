@@ -8,7 +8,6 @@ import Loading from '../../components/ui/Loading/Loading';
 import HeroAdventure from '../adventure/HeroAdventure/HeroAdventure';
 import './Home.css';
 
-
 export default function Home() {
     const [stories, setStories] = useState({
         newbie: [],

@@ -39,9 +39,8 @@ a img {
 
 .adventure-nav {
     width: 122px;
-    padding: 1px;
     height: auto;
-    margin-top: 0.24rem;
+    margin-top: -0.45rem;
 }
 
 .adventure-nav:hover {

@@ -8,14 +8,18 @@ import './components/layout/Footer/Footer.css';
 export default function App() {
     const location = useLocation();
     const isReaderPage = location.pathname.includes('/read/');
+    const isLevelPage = location.pathname.includes('/adventure/chapter/');
+    const isQuizPage = location.pathname.match(/\/adventure\/chapter\/[\w-]+\/level\/[\w-]+/);
+
+    const hideNavigation = isReaderPage || isLevelPage || isQuizPage;
 
     return (
         <div className="app">
-            {!isReaderPage && <Header />}
+            {!hideNavigation && <Header />}
             <main>
                 <Outlet />
             </main>
-            <Footer />
+            {!hideNavigation && <Footer />}
         </div>
     )
 }

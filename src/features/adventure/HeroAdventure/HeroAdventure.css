@@ -32,6 +32,15 @@
     height: auto;
 }
 
+.hero-adventure-button:active {
+    transform: translateX(-50%) scale(0.95);
+    filter: brightness(0.9);
+}
+
+.hero-adventure-button:active img {
+    transform: translateY(2px);
+}
+
 .hero-adventure-button:hover {
     transform: translateX(-50%) scale(1.05);
 }

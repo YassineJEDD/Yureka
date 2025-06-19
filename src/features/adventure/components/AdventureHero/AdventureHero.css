@@ -1,0 +1,91 @@
+.adventure-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 60px;
+}
+
+.adventure-hero img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    border: 6px solid rgb(136, 0, 0);
+}
+
+@media (max-width: 1120px) {
+    .adventure-hero {
+        max-width: 900px;
+    }
+
+    .adventure-hero img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 950px) {
+    .adventure-hero {
+        max-width: 700px;
+    }
+    .adventure-hero img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 750px) {
+    .adventure-hero {
+        max-width: 650px;
+    }
+    .adventure-hero img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 650px) {
+    .adventure-hero {
+        max-width: 540px;
+    }
+    .adventure-hero img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 560px) {
+    .adventure-hero {
+        max-width: 430px;
+    }
+    .adventure-hero img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 450px) {
+    .adventure-hero {
+        max-width: 330px;
+        padding-top: 40px;
+    }
+    .adventure-hero img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+    .adventure-hero {
+        max-width: 320px;
+    }
+    .adventure-hero img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 320px) {
+    .adventure-hero {
+        max-width: 280px;
+    }
+    .adventure-hero img {
+        max-width: 100%;
+    }
+}
