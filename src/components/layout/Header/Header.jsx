@@ -1,5 +1,7 @@
+// src/components/layout/Header/Header.jsx
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
+import { useAuth } from '../../../contexts/AuthContext';
 import './Header.css';
 
 export default function Header() {
@@ -8,6 +10,7 @@ export default function Header() {
     const menuRef = useRef(null);
     const profileIconRef = useRef(null);
     const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
 
     const handleResize = () => {
         setIsMobile(window.innerWidth <= 990);
@@ -17,7 +20,11 @@ export default function Header() {
         if (isMobile) {
             toggleMenu();
         } else {
-            navigate('/profile');
+            if (isAuthenticated) {
+                navigate('/profile');
+            } else {
+                navigate('/login');
+            }
         }
     };
 
@@ -86,6 +93,9 @@ export default function Header() {
                         className="profile-icon"
                         onClick={handleProfileClick}
                         ref={profileIconRef}
+                        style={{
+                            filter: isAuthenticated ? 'drop-shadow(0px 0px 10px rgba(145, 255, 0, 0.5))' : 'none'
+                        }}
                     />
 
                     {/* Mobile menu */}
@@ -103,9 +113,15 @@ export default function Header() {
                             <Link to="/community" onClick={closeMenu}>
                                 <span>Community</span>
                             </Link>
-                            <Link to="/profile" onClick={closeMenu}>
-                                <span>Profil</span>
-                            </Link>
+                            {isAuthenticated ? (
+                                <Link to="/profile" onClick={closeMenu}>
+                                    <span>Profile</span>
+                                </Link>
+                            ) : (
+                                <Link to="/login" onClick={closeMenu}>
+                                    <span>Login</span>
+                                </Link>
+                            )}
                         </div>
                     )}
                 </div>

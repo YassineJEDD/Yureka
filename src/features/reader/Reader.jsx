@@ -1,3 +1,4 @@
+// src/features/reader/Reader.jsx
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchStory } from '../../services/api';
@@ -7,6 +8,7 @@ import FloatingMenu from './components/FloatingMenu/FloatingMenu';
 import DesktopDefinitionBox from './components/DefinitionBox/Desktop/DesktopDefinitionBox.jsx';
 import MobileDefinitionBox from './components/DefinitionBox/Mobile/MobileDefinitionBox.jsx';
 import StoryContent from './components/StoryContent/StoryContent';
+import MarkReadButton from './components/MarkReadButton/MarkReadButton';
 import Loading from '../../components/ui/Loading/Loading';
 import './Reader.css';
 
@@ -137,6 +139,9 @@ export default function Reader() {
                     showPinyin={showPinyin}
                 />
             </div>
+
+            {/* Mark as Read Button */}
+            <MarkReadButton bookId={storyId} />
         </div>
     );
 }

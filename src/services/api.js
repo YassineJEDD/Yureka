@@ -1,5 +1,13 @@
+// src/services/api.js
 const API_URL = 'http://localhost';
 
+// Helper function to get auth headers
+const getAuthHeaders = () => {
+    const token = localStorage.getItem('token');
+    return token ? { 'Authorization': `Bearer ${token}` } : {};
+};
+
+// Book-related functions
 export const fetchBooks = async () => {
     // eslint-disable-next-line no-useless-catch
     try {
@@ -74,6 +82,85 @@ export const fetchStory = async (storyId) => {
     }
 };
 
+// User-related functions
+export const getUserInfo = async (userId) => {
+    try {
+        const response = await fetch(`${API_URL}/users/${userId}`, {
+            headers: getAuthHeaders()
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching user info:", error);
+        throw error;
+    }
+};
+
+export const getUserProgress = async (userId) => {
+    try {
+        const response = await fetch(`${API_URL}/users/${userId}/progress`, {
+            headers: getAuthHeaders()
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching user progress:", error);
+        throw error;
+    }
+};
+
+export const getUserBooks = async (userId) => {
+    try {
+        const response = await fetch(`${API_URL}/users/${userId}/books`, {
+            headers: getAuthHeaders()
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching user books:", error);
+        throw error;
+    }
+};
+
+export const markBookAsRead = async (userId, bookId) => {
+    try {
+        const response = await fetch(`${API_URL}/users/${userId}/books/${bookId}/read`, {
+            method: 'POST',
+            headers: getAuthHeaders()
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Error marking book as read:", error);
+        throw error;
+    }
+};
+
+export const markBookAsUnread = async (userId, bookId) => {
+    try {
+        const response = await fetch(`${API_URL}/users/${userId}/books/${bookId}/read`, {
+            method: 'DELETE',
+            headers: getAuthHeaders()
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Error marking book as unread:", error);
+        throw error;
+    }
+};
+
+// Chapter and Level functions
 export const fetchChapters = async () => {
     try {
         const response = await fetch(`${API_URL}/chapters`);

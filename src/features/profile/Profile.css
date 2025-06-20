@@ -1,0 +1,232 @@
+.profile-page {
+    min-height: 100vh;
+    padding: 2rem;
+    padding-top: 103px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.profile-container {
+    background: #1A2214;
+    border: 2px solid #396200;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.profile-header {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #1A2214 0%, #2a3a1a 100%);
+    border-bottom: 1px solid #396200;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-username {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 1.5rem;
+    color: #91ff00;
+    margin-bottom: 0.5rem;
+}
+
+.profile-email {
+    color: #999;
+    margin-bottom: 1.5rem;
+}
+
+.profile-stats {
+    display: flex;
+    gap: 2rem;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-value {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 1.5rem;
+    color: #91ff00;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.profile-tabs {
+    display: flex;
+    border-bottom: 1px solid #396200;
+}
+
+.tab {
+    background: transparent;
+    border: none;
+    color: #999;
+    padding: 1rem 2rem;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.tab:hover {
+    color: #91ff00;
+}
+
+.tab.active {
+    color: #91ff00;
+}
+
+.tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #91ff00;
+}
+
+.profile-content {
+    padding: 2rem;
+}
+
+.overview-section h2,
+.books-section h2,
+.settings-section h2 {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 1.2rem;
+    color: #91ff00;
+    margin-bottom: 1.5rem;
+}
+
+.overview-section p {
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+.recent-activity h3 {
+    font-size: 1rem;
+    color: #91ff00;
+    margin-bottom: 1rem;
+}
+
+.recent-activity ul {
+    list-style: none;
+    padding: 0;
+}
+
+.recent-activity li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #333;
+    color: #ccc;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.book-item {
+    background: #000;
+    border: 1px solid #396200;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.book-item:hover {
+    transform: translateY(-4px);
+    border-color: #91ff00;
+}
+
+.book-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.book-item h4 {
+    font-size: 0.9rem;
+    color: #91ff00;
+    margin-bottom: 0.5rem;
+}
+
+.read-date {
+    font-size: 0.7rem;
+    color: #666;
+}
+
+.settings-group {
+    background: #000;
+    border: 1px solid #396200;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.settings-group h3 {
+    font-size: 1rem;
+    color: #91ff00;
+    margin-bottom: 1rem;
+}
+
+.settings-group p {
+    color: #ccc;
+    margin-bottom: 0.5rem;
+}
+
+.logout-button {
+    background: #ff3333;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+    background: #ff5555;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .profile-page {
+        padding: 1rem;
+        padding-top: 73px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-stats {
+        justify-content: center;
+    }
+
+    .tab {
+        font-size: 0.6rem;
+        padding: 0.8rem 1rem;
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
