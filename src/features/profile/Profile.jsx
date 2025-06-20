@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { getUserBooks } from '../../services/api';
+import { getUserBooks, markBookAsUnread } from '../../services/api';
 import Loading from '../../components/ui/Loading/Loading';
 import './Profile.css';
 
@@ -11,6 +11,11 @@ export default function Profile() {
     const [readBooks, setReadBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState('overview');
+    const [currentBookIndex, setCurrentBookIndex] = useState(0);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
         if (!isAuthenticated) {
@@ -21,15 +26,24 @@ export default function Profile() {
         const loadUserBooks = async () => {
             try {
                 const books = await getUserBooks(user.id);
-                // Map the books to ensure image property is correctly set
                 const mappedBooks = books.map(book => ({
                     ...book,
-                    image: book.image_url || book.image || '/src/assets/Yureka-Assets/placeholder.jpg'
+                    image: book.image_url || book.image || '/src/assets/Yureka-Assets/placeholder.jpg',
+                    book_id: book.id || book.book_id
                 }));
-                // Only consider books as read if they have a valid timestamp
-                setReadBooks(mappedBooks.filter(book =>
-                    book.is_read && book.marked_read_at && new Date(book.marked_read_at).getTime() > 0
-                ));
+
+                const readBooks = mappedBooks.filter(book => {
+                    const isRead = book.is_read === true ||
+                        book.is_read === 1 ||
+                        book.is_read === '1';
+
+                    const hasValidTimestamp = book.marked_read_at &&
+                        new Date(book.marked_read_at).getTime() > 0;
+
+                    return isRead && hasValidTimestamp;
+                });
+
+                setReadBooks(readBooks);
             } catch (error) {
                 console.error('Error loading user books:', error);
             } finally {
@@ -40,9 +54,34 @@ export default function Profile() {
         loadUserBooks();
     }, [user, isAuthenticated, navigate]);
 
+    const handleMarkAsUnread = async (bookId) => {
+        try {
+            setLoading(true);
+            await markBookAsUnread(user.id, bookId);
+
+            setReadBooks(prevBooks => prevBooks.filter(book => book.book_id.toString() !== bookId.toString()));
+        } catch (error) {
+            console.error('Error marking book as unread:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const handleLogout = () => {
         logout();
         navigate('/');
+    };
+
+    const goToPreviousBook = () => {
+        setCurrentBookIndex(prevIndex =>
+            prevIndex > 0 ? prevIndex - 1 : 0
+        );
+    };
+
+    const goToNextBook = () => {
+        setCurrentBookIndex(prevIndex =>
+            prevIndex < readBooks.length - 1 ? prevIndex + 1 : prevIndex
+        );
     };
 
     if (loading) {
@@ -51,28 +90,28 @@ export default function Profile() {
 
     return (
         <div className="profile-page">
-            <div className="profile-container">
-                <div className="profile-header">
-                    <div className="profile-info">
-                        <h1 className="profile-username">{user?.username}</h1>
-                        <p className="profile-email">{user?.email}</p>
-                        <div className="profile-stats">
-                            <div className="stat">
-                                <span className="stat-value">{readBooks.length}</span>
-                                <span className="stat-label">Books Read</span>
-                            </div>
-                            <div className="stat">
-                                <span className="stat-value">0</span>
-                                <span className="stat-label">Achievements</span>
-                            </div>
-                            <div className="stat">
-                                <span className="stat-value">0</span>
-                                <span className="stat-label">Streak Days</span>
-                            </div>
+            <div className="profile-header">
+                <div className="profile-info">
+                    <h1 className="profile-username">{user?.username}</h1>
+                    <p className="profile-email">{user?.email}</p>
+                    <div className="profile-stats">
+                        <div className="stat">
+                            <span className="stat-value">{readBooks.length}</span>
+                            <span className="stat-label">Books Read</span>
+                        </div>
+                        <div className="stat">
+                            <span className="stat-value">0</span>
+                            <span className="stat-label">Achievements</span>
+                        </div>
+                        <div className="stat">
+                            <span className="stat-value">0</span>
+                            <span className="stat-label">Streak Days</span>
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <div className="profile-page-container">
                 <div className="profile-tabs">
                     <button
                         className={`tab ${activeTab === 'overview' ? 'active' : ''}`}
@@ -120,18 +159,48 @@ export default function Profile() {
                         <div className="books-section">
                             <h2>Books You've Read</h2>
                             {readBooks.length > 0 ? (
-                                <div className="books-grid">
-                                    {readBooks.map(book => (
-                                        <div key={book.book_id} className="book-item">
-                                            <img src={book.image || '/placeholder.jpg'} alt={book.title} />
-                                            <h4>{book.title}</h4>
+                                <div className="book-carousel">
+                                    <button
+                                        className={`book-carousel-button prev ${currentBookIndex === 0 ? 'disabled' : ''}`}
+                                        onClick={goToPreviousBook}
+                                        disabled={currentBookIndex === 0}
+                                    >
+                                        <img
+                                            src="/src/assets/Yureka-Assets/prev-button.png"
+                                            alt="Previous"
+                                            className="carousel-button-image"
+                                        />
+                                    </button>
+
+                                    <div className="book-carousel-content">
+                                        <div className="book-item">
+                                            <img src={readBooks[currentBookIndex].image || '/placeholder.jpg'} alt={readBooks[currentBookIndex].title} />
+                                            <h4>{readBooks[currentBookIndex].title}</h4>
                                             <p className="read-date">
-                                                {book.marked_read_at && new Date(book.marked_read_at).getTime() > 0
-                                                    ? `Read on ${new Date(book.marked_read_at).toLocaleDateString()}`
+                                                {readBooks[currentBookIndex].marked_read_at && new Date(readBooks[currentBookIndex].marked_read_at).getTime() > 0
+                                                    ? `Read on ${new Date(readBooks[currentBookIndex].marked_read_at).toLocaleDateString()}`
                                                     : 'Recently read'}
                                             </p>
+                                            <button
+                                                className="unread-button"
+                                                onClick={() => handleMarkAsUnread(readBooks[currentBookIndex].book_id)}
+                                            >
+                                                Mark as Unread
+                                            </button>
                                         </div>
-                                    ))}
+                                    </div>
+
+                                    <button
+                                        className={`book-carousel-button next ${currentBookIndex >= readBooks.length - 1 ? 'disabled' : ''}`}
+                                        onClick={goToNextBook}
+                                        disabled={currentBookIndex >= readBooks.length - 1}
+                                    >
+                                        <img
+                                            src="/src/assets/Yureka-Assets/next-button.png"
+                                            alt="Next"
+                                            className="carousel-button-image"
+                                        />
+                                    </button>
                                 </div>
                             ) : (
                                 <p>You haven't marked any books as read yet.</p>

@@ -121,7 +121,12 @@ export const getUserBooks = async (userId) => {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        return await response.json();
+        const data = await response.json();
+
+        // Debug logging
+        console.log('getUserBooks API response:', data);
+
+        return data;
     } catch (error) {
         console.error("Error fetching user books:", error);
         throw error;

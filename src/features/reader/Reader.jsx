@@ -1,4 +1,3 @@
-// src/features/reader/Reader.jsx
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchStory } from '../../services/api';

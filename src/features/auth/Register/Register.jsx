@@ -1,4 +1,3 @@
-// src/features/auth/Register/Register.jsx
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
@@ -18,13 +17,11 @@ export default function Register() {
         e.preventDefault();
         setError('');
 
-        // Validate passwords match
         if (password !== confirmPassword) {
             setError('Passwords do not match');
             return;
         }
 
-        // Validate password length
         if (password.length < 6) {
             setError('Password must be at least 6 characters long');
             return;
@@ -34,8 +31,7 @@ export default function Register() {
         const result = await register(username, email, password);
 
         if (result.success) {
-            // Redirect to login after successful registration
-            navigate('/login');
+            navigate('/login?registered=true');
         } else {
             setError(result.error);
         }
