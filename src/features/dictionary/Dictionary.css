@@ -1,0 +1,114 @@
+.dictionary-container {
+    max-width: 800px;
+    margin: 80px auto 40px;
+    padding: 20px;
+    color: white;
+}
+
+.dictionary-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.dictionary-header h1 {
+    font-family: 'Press Start 2P', sans-serif;
+    color: #91ff00;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.search-form {
+    display: flex;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.search-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #396200;
+    background: #1a1a1a;
+    color: white;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+}
+
+.search-button {
+    padding: 12px 20px;
+    background: #396200;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.7rem;
+}
+
+.search-button:hover {
+    background: #91ff00;
+    color: black;
+}
+
+.loading, .error {
+    text-align: center;
+    padding: 20px;
+}
+
+.error {
+    color: #ff6b6b;
+}
+
+.translation-result {
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #396200;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.word-info {
+    border-bottom: 1px solid #396200;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.word-info h2 {
+    color: #91ff00;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.phonetic {
+    color: #aaa;
+    font-style: italic;
+}
+
+.translation-box {
+    background: rgba(57, 98, 0, 0.2);
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.chinese-translation {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #91ff00;
+}
+
+.meaning-item {
+    margin-bottom: 15px;
+}
+
+.meaning-item h4 {
+    color: #91ff00;
+    margin-bottom: 8px;
+    font-style: italic;
+}
+
+.meaning-item ul {
+    padding-left: 20px;
+}
+
+.meaning-item li {
+    margin-bottom: 5px;
+}

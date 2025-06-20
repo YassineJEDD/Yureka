@@ -1,13 +1,10 @@
-// src/services/api.js
 const API_URL = 'http://localhost';
 
-// Helper function to get auth headers
 const getAuthHeaders = () => {
     const token = localStorage.getItem('token');
     return token ? { 'Authorization': `Bearer ${token}` } : {};
 };
 
-// Book-related functions
 export const fetchBooks = async () => {
     // eslint-disable-next-line no-useless-catch
     try {
@@ -82,7 +79,6 @@ export const fetchStory = async (storyId) => {
     }
 };
 
-// User-related functions
 export const getUserInfo = async (userId) => {
     try {
         const response = await fetch(`${API_URL}/users/${userId}`, {
@@ -123,7 +119,6 @@ export const getUserBooks = async (userId) => {
         }
         const data = await response.json();
 
-        // Debug logging
         console.log('getUserBooks API response:', data);
 
         return data;
@@ -165,7 +160,6 @@ export const markBookAsUnread = async (userId, bookId) => {
     }
 };
 
-// Chapter and Level functions
 export const fetchChapters = async () => {
     try {
         const response = await fetch(`${API_URL}/chapters`);

@@ -77,8 +77,8 @@ export default function Header() {
                     <Link to="/discover">
                         <img src="/src/assets/Yureka-Assets/discover-nav.png" alt="discover" className="discover-nav" />
                     </Link>
-                    <Link to="/flashcards">
-                        <img src="/src/assets/Yureka-Assets/flashcards-nav.png" alt="flashcards" className="flashcards-nav" />
+                    <Link to="/dictionary">
+                        <img src="/src/assets/Yureka-Assets/dictionary-nav.png" alt="dictionary" className="dictionary-nav" />
                     </Link>
                     <Link to="/community">
                         <img src="/src/assets/Yureka-Assets/community-nav.png" alt="community" className="community-nav" />

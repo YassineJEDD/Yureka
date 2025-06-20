@@ -29,7 +29,7 @@ export default function Footer() {
                         <ul>
                             <li><a href="/adventure" className="adventure-checkpoint">Adventure</a></li>
                             <li><a href="/discover">Discover</a></li>
-                            <li><a href="#">Flashcards</a></li>
+                            <li><a href="#">Dictionary</a></li>
                         </ul>
                     </div>
 

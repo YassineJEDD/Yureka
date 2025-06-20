@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import Header from './components/layout/Header/Header.jsx'
 import Footer from './components/layout/Footer/Footer.jsx'
+import LoginPromptPopup from './components/ui/LoginPromptPopup/LoginPromptPopup.jsx'
 import './styles/App.css';
 import './components/layout/Header/Header.css';
 import './components/layout/Footer/Footer.css';
@@ -15,6 +16,7 @@ export default function App() {
 
     return (
         <div className="app">
+            <LoginPromptPopup />
             {!hideNavigation && <Header />}
             <main>
                 <Outlet />

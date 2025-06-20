@@ -1,4 +1,3 @@
-// src/features/reader/components/MarkReadButton/MarkReadButton.jsx
 import { useState, useEffect } from 'react';
 import { useAuth } from '../../../../contexts/AuthContext';
 import { markBookAsRead, markBookAsUnread, getUserBooks } from '../../../../services/api';
@@ -19,9 +18,7 @@ export default function MarkReadButton({ bookId }) {
             try {
                 const userBooks = await getUserBooks(user.id);
 
-                // Find the book - API returns id as string
                 const book = userBooks.find(b => {
-                    // Handle both id and book_id, as strings
                     return (b.id && b.id.toString() === bookId.toString()) ||
                         (b.book_id && b.book_id.toString() === bookId.toString());
                 });
@@ -29,7 +26,6 @@ export default function MarkReadButton({ bookId }) {
                 if (book) {
                     console.log('Found book:', book.id, 'is_read:', book.is_read, 'type:', typeof book.is_read);
 
-                    // Handle is_read as either boolean or number (0/1)
                     const readStatus = book.is_read === true ||
                         book.is_read === 1 ||
                         book.is_read === '1';
@@ -47,10 +43,8 @@ export default function MarkReadButton({ bookId }) {
             }
         };
 
-        // Call immediately
         checkReadStatus();
 
-        // Also check when window gains focus (in case data changed in another tab)
         const handleFocus = () => {
             checkReadStatus();
         };
@@ -82,7 +76,6 @@ export default function MarkReadButton({ bookId }) {
                 setIsRead(true);
             }
 
-            // Verify the change by re-checking status
             setTimeout(async () => {
                 try {
                     const userBooks = await getUserBooks(user.id);
@@ -106,7 +99,6 @@ export default function MarkReadButton({ bookId }) {
         } catch (error) {
             console.error('Error toggling read status:', error);
             alert('Failed to update read status');
-            // Revert to previous state on error
             setIsRead(previousState);
         } finally {
             setLoading(false);
@@ -122,9 +114,8 @@ export default function MarkReadButton({ bookId }) {
             className={`mark-read-button ${isRead ? 'read' : ''}`}
             onClick={handleToggleRead}
             disabled={loading}
-            title={isRead ? 'Mark as unread' : 'Mark as read'}
         >
-            {loading ? '...' : (isRead ? '✓' : '○')}
+            {loading ? 'Loading...' : (isRead ? 'Mark as unread' : 'Mark as Read')}
         </button>
     );
 }

@@ -59,13 +59,13 @@ a img {
     filter: drop-shadow(0px 0px 15px rgba(145, 255, 0, 2));
 }
 
-.flashcards-nav {
-    width: 140px;
+.dictionary-nav {
+    width: 134px;
     height: auto;
     margin-top: 0.08rem;
 }
 
-.flashcards-nav:hover {
+.dictionary-nav:hover {
     filter: drop-shadow(0px 0px 15px rgba(145, 255, 0, 2));
 }
 

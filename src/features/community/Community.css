@@ -1,0 +1,102 @@
+.community-page {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.community-container {
+    background: #1A2214;
+    border: 3px solid #396200;
+    border-radius: 16px;
+    padding: 3rem;
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 8px 32px rgba(57, 98, 0, 0.5);
+}
+
+.community-dragon {
+    width: 120px;
+    height: auto;
+    margin-bottom: 2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.community-title {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 1.8rem;
+    color: #91ff00;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.community-message {
+    margin-bottom: 2.5rem;
+}
+
+.message-text {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.message-subtext {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    line-height: 1.6;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.home-button {
+    background: #396200;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.home-button:hover {
+    background: #4a7d00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(145, 255, 0, 0.4);
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .community-title {
+        font-size: 1.4rem;
+    }
+
+    .message-text {
+        font-size: 1rem;
+    }
+
+    .community-container {
+        padding: 2rem;
+    }
+
+    .home-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.8rem;
+    }
+}

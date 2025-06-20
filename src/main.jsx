@@ -13,6 +13,8 @@ import Login from './features/auth/Login/Login.jsx'
 import Register from './features/auth/Register/Register.jsx'
 import Profile from './features/profile/Profile.jsx'
 import PrivateRoute from './components/auth/PrivateRoute.jsx'
+import Community from './features/community/Community.jsx'
+import Dictionary from './features/dictionary/Dictionary.jsx'
 import './styles/index.css'
 
 const router = createBrowserRouter([
@@ -28,6 +30,8 @@ const router = createBrowserRouter([
             { path: 'adventure/chapter/:chapterId/level/:levelId', element: <Quiz /> },
             { path: 'login', element: <Login /> },
             { path: 'register', element: <Register /> },
+            { path: 'community', element: <Community /> },
+            { path: 'dictionary', element: <Dictionary /> },
             {
                 path: 'profile',
                 element: (

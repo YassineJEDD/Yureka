@@ -1,4 +1,3 @@
-// src/contexts/AuthContext.jsx
 import { createContext, useState, useContext, useEffect } from 'react';
 
 const AuthContext = createContext();
@@ -16,7 +15,6 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Check if user is logged in on mount
     useEffect(() => {
         const checkAuth = () => {
             const storedUser = localStorage.getItem('user');
@@ -48,7 +46,6 @@ export const AuthProvider = ({ children }) => {
                 throw new Error(data.error || 'Login failed');
             }
 
-            // Store user data and token
             localStorage.setItem('user', JSON.stringify(data.user));
             localStorage.setItem('token', data.token);
             setUser(data.user);
